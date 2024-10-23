@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapps-service
+  labels:
+    app: myapps
+spec:
+  type: LoadBalancer # Tipe Service, bisa ClusterIP, NodePort, atau LoadBalancer
+  selector:
+    app: myapps
+  ports:
+    - protocol: TCP
+      port: 8080 # Port yang diekspos oleh Service
+      targetPort: 8080 # Port di dalam Pod yang ditargetkan
+      nodePort: 30000
